@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-const validateJWT = (req, res) => {
+export const validateJWT = (req, res) => {
   // custom header x-header
   const token = req.header('x-token')
 
@@ -10,5 +10,16 @@ const validateJWT = (req, res) => {
     })
   }
   try {
-  } catch (err) {}
+    const { uid, name } = jwt.verify(
+      token,
+      process.env.JSON_WEB_TOKEN_SECRET_KEY
+    )
+    req.uid = uid
+    req.name = name
+  } catch (err) {
+    return res.status(401).json({
+      ok: false,
+      msg: 'Invalid token'
+    })
+  }
 }
