@@ -1,7 +1,5 @@
 import { Router } from 'express'
 
-import { turso } from '../config/database.js'
-
 import {
   createUser,
   updateUser,
@@ -15,7 +13,7 @@ const router = Router()
 router.post('/create', createUser) // Crear usuario
 router.put('/update', updateUser) // Actualizar usuario
 router.delete('/delete', deleteUser) // Eliminar usuario
-router.post('/auth', authUser) // Autenticación del usuario
+router.post('/login', authUser) // Autenticación del usuario
 router.get('/revalidate', revalidateToken) // Revalidar token de autenticación
 
 export default router
