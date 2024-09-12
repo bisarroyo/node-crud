@@ -11,9 +11,9 @@ import {
 const router = Router()
 
 router.post('/create', createUser) // Crear usuario
-router.put('/update', updateUser) // Actualizar usuario
+router.post('/', authUser) // Autenticación del usuario
 router.delete('/delete', deleteUser) // Eliminar usuario
-router.post('/login', authUser) // Autenticación del usuario
 router.get('/revalidate', revalidateToken) // Revalidar token de autenticación
+router.put('/update', updateUser) // Actualizar usuario
 
 export default router
