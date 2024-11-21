@@ -4,6 +4,7 @@ import cors from 'cors'
 import 'dotenv/config'
 
 import usersRoutes from './routes/auth.js'
+import mailRoutes from './routes/mail.js'
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/v1/auth', usersRoutes)
+app.use('/api/v1/mail', mailRoutes)
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`)
