@@ -6,7 +6,8 @@ export const validateJWT = (req, res) => {
 
   if (!token) {
     res.status(401).json({
-      ok: false
+      ok: false,
+      msg: 'No token provided'
     })
   }
   try {
