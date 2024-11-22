@@ -7,7 +7,7 @@ export const findCategories = async () => {
   return rows
 }
 
-export const insertCategory = async (category) => {
+export const insertCategoryDb = async (category) => {
   const { rows } = await turso.execute({
     sql: 'INSERT INTO categories (category) VALUES (?)',
     args: [category]
@@ -15,7 +15,7 @@ export const insertCategory = async (category) => {
   return rows
 }
 
-export const updateCategory = async (category, id) => {
+export const updateCategoryDb = async (category, id) => {
   const { rows } = await turso.execute({
     sql: 'UPDATE categories SET category = ? WHERE id = ?',
     args: [category, id]
@@ -23,7 +23,7 @@ export const updateCategory = async (category, id) => {
   return rows
 }
 
-export const removeCategory = async (id) => {
+export const removeCategoryDb = async (id) => {
   const { rows } = await turso.execute({
     sql: 'DELETE FROM categories WHERE id = ?',
     args: [id]
