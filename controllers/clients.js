@@ -62,6 +62,13 @@ export const getClientById = async (req, res) => {
 export const insertClient = async (req, res) => {
   const { email, name, company, category } = req.body
   try {
+    const client = await findClientByEmail(email)
+    if (client.length > 0) {
+      res.status(401).json({
+        ok: false,
+        msg: 'Client already exists'
+      })
+    }
     await insertClientDb(email, name, company, category)
     res.status(200).json({
       ok: true,
